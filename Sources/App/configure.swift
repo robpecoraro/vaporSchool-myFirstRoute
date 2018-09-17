@@ -29,5 +29,8 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     var migrations = MigrationConfig()
     migrations.add(model: Todo.self, database: .sqlite)
     services.register(migrations)
-
+    
+    // Changing the port
+    let myService = NIOServerConfig.default(port: 8081)
+    services.register(myService)
 }
